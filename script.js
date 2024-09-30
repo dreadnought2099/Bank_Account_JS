@@ -32,10 +32,11 @@ function withdraw() {
 
 function exitATM() {
   balance = 0;
-  const currentYear = new Date().getFullYear();
   document.getElementById("balance").value = balance;
   document.getElementById("message").innerText = "THANK YOU FOR USING ATM";
-  document.getElementById(
-    "copyright"
-  ).innerHTML = `&copy; ${currentYear} RMAGALLANEZ. All rights reserved.`;
 }
+
+const currentYear = new Date().getFullYear();
+document.getElementById(
+  "copyright"
+).innerHTML = `&copy; ${currentYear} RMAGALLANEZ. All rights reserved.`;
