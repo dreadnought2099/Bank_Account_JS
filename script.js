@@ -1,4 +1,6 @@
-let balance = 0;
+let balance = localStorage.getItem("balance")
+  ? parseFloat(localStorage.getItem("balance"))
+  : 0;
 
 function checkBal() {
   document.getElementById("message").innerText = "Your balance is " + balance;
@@ -13,6 +15,7 @@ function dep() {
   } else {
     document.getElementById("message").innerText = "Invalid deposit amount";
   }
+  localStorage.setItem("balance", balance);
 }
 
 function withdraw() {
@@ -28,15 +31,20 @@ function withdraw() {
   } else {
     document.getElementById("message").innerText = "Invalid withdrawal amount.";
   }
+  localStorage.setItem("balance", balance);
 }
 
 function exitATM() {
-  balance = 0;
   document.getElementById("balance").value = balance;
-  document.getElementById("message").innerText = "THANK YOU FOR USING ATM";
+  document.getElementById("message").innerText = "Thank you for trusting!";
+  localStorage.setItem("balance", balance);
 }
 
 const currentYear = new Date().getFullYear();
 document.getElementById(
   "copyright"
 ).innerHTML = `&copy; ${currentYear} RMAGALLANEZ. All rights reserved.`;
+
+window.onload = function () {
+  document.getElementById("balance").value = balance;
+};
